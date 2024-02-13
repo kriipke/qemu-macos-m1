@@ -1,0 +1,102 @@
+= Overview
+
+THE FOLLOWING ARE SOME USEFUL EXCEPRTS FROM `edk2-build.config`
+
+####################################################################################
+# x86_64
+
+[build.ovmf.x86_64]
+desc = ovmf build (64-bit)
+conf = OvmfPkg/OvmfPkgX64.dsc
+arch = X64
+opts = common
+pcds = workaround.202308
+plat = OvmfX64
+dest = ../pc-bios
+cpy1 = FV/OVMF_CODE.fd edk2-x86_64-code.fd
+
+[build.ovmf.x86_64.secure]
+desc = ovmf build (64-bit, secure boot)
+conf = OvmfPkg/OvmfPkgIa32X64.dsc
+arch = IA32 X64
+opts = common
+       ovmf.sb.smm
+pcds = workaround.202308
+plat = Ovmf3264
+dest = ../pc-bios
+cpy1 = FV/OVMF_CODE.fd edk2-x86_64-secure-code.fd
+
+[build.ovmf.microvm]
+desc = ovmf build for microvm
+conf = OvmfPkg/Microvm/MicrovmX64.dsc
+arch = X64
+opts = common
+pcds = workaround.202308
+plat = MicrovmX64
+dest = ../pc-bios
+cpy1 = FV/MICROVM.fd  edk2-x86_64-microvm.fd
+
+####################################################################################
+# arm
+
+[build.armvirt.arm]
+desc = ArmVirt build, 32-bit (arm v7)
+conf = ArmVirtPkg/ArmVirtQemu.dsc
+arch = ARM
+opts = common
+       armvirt.silent
+pcds = nx.broken.shim.grub
+plat = ArmVirtQemu-ARM
+dest = ../pc-bios
+cpy1 = FV/QEMU_EFI.fd    edk2-arm-code.fd
+cpy2 = FV/QEMU_VARS.fd   edk2-arm-vars.fd
+pad1 = edk2-arm-code.fd  64m
+pad2 = edk2-arm-vars.fd  64m
+
+####################################################################################
+# aarch64
+
+[build.armvirt.aa64]
+desc = ArmVirt build, 64-bit (arm v8)
+conf = ArmVirtPkg/ArmVirtQemu.dsc
+arch = AARCH64
+opts = common
+       armvirt.silent
+pcds = nx.broken.shim.grub
+plat = ArmVirtQemu-AARCH64
+dest = ../pc-bios
+cpy1 = FV/QEMU_EFI.fd  edk2-aarch64-code.fd
+pad1 = edk2-aarch64-code.fd  64m
+
+####################################################################################
+# arm
+
+[build.armvirt.arm]
+desc = ArmVirt build, 32-bit (arm v7)
+conf = ArmVirtPkg/ArmVirtQemu.dsc
+arch = ARM
+opts = common
+       armvirt.silent
+pcds = nx.broken.shim.grub
+plat = ArmVirtQemu-ARM
+dest = ../pc-bios
+cpy1 = FV/QEMU_EFI.fd    edk2-arm-code.fd
+cpy2 = FV/QEMU_VARS.fd   edk2-arm-vars.fd
+pad1 = edk2-arm-code.fd  64m
+pad2 = edk2-arm-vars.fd  64m
+
+####################################################################################
+# aarch64
+
+[build.armvirt.aa64]
+desc = ArmVirt build, 64-bit (arm v8)
+conf = ArmVirtPkg/ArmVirtQemu.dsc
+arch = AARCH64
+opts = common
+       armvirt.silent
+pcds = nx.broken.shim.grub
+plat = ArmVirtQemu-AARCH64
+dest = ../pc-bios
+cpy1 = FV/QEMU_EFI.fd  edk2-aarch64-code.fd
+pad1 = edk2-aarch64-code.fd  64m
+####################################################################################
