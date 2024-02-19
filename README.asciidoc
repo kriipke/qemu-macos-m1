@@ -15,6 +15,12 @@ Notably:
 
 === 2. Download ubuntu cloud image 
 
+Donwload the Ubuntu cloud images to the directory you set `$IMGS_DIR` to above.
+
+       cd $IMGS_DIR 
+       curl -sSLO https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
+       curl -sSLO https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-arm64.img
+
 === 3. Run VM
 
        ./run.sh
