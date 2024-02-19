@@ -1,1 +1,1 @@
-./vm-templates.sh
+./bin/vm-templates.sh
