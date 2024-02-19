@@ -4,8 +4,8 @@ password: password
 users:
   - name: admin
     gecos: admin user
-    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
-    groups: sudo
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: sudo, users, admin
     ssh_pwauth: True
     ssh_authorized_keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKNscRL479C1Z+jtlyoitLP+ZX5DeWrK12Dt2ZyiBHA9 github

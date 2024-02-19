@@ -21,11 +21,15 @@ function create_disk () {
 	OUTPUT_IMAGE=$2
 	printf 'Using IMGS_DIR:\n\t%s\n\n' "${IMGS_DIR}"
 
-	set -x 
-	qemu-img create \
-		-F qcow2 -f qcow2 \
-		-o backing_file="${IMGS_DIR:?}/${BASE_IMAGE:?}" "${DISK_DIR:?}/${OUTPUT_IMAGE:?}"
-	set +x
+	if ! [ -f "${DISK_DIR}/${OUTPUT_IMAGE:?}" ]; then
+		set -x 
+		qemu-img create \
+			-F qcow2 -f qcow2 \
+			-o backing_file="${IMGS_DIR:?}/${BASE_IMAGE:?}" "${DISK_DIR:?}/${OUTPUT_IMAGE:?}"
+		set +x
+	else
+		echo "Output image file already exists! Not creating new disk image."
+	fi
 }
 
 function vmboot_x64 () {
@@ -42,7 +46,12 @@ function vmboot_x64 () {
 		-bios ${BIOS_PATH:?} -machine ${MACHINE_TYPE} \
 		-drive file=${DISK_DIR:?}/${VM_DISK:?},if=virtio \
 		${CLOUDINIT_ISO:+--cdrom ${CLOUDINIT_DIR:?}/$CLOUDINIT_ISO} \
-		-m ${VM_MEMORY:-$DEFAULT_MEMORY}
+		-m ${VM_MEMORY:-$DEFAULT_MEMORY} \
+		-nographic \
+		-serial mon:stdio 
+   		#-device virtio-scsi-pci,id=scsi \
+   		#-device virtio-serial-pci 
+		
 	set +x
 }
 
