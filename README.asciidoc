@@ -1,5 +1,26 @@
 = QEMU on MacOS
 
+== Usage
+
+=== 1. Update Variables in Script
+
+Change vars at the top of:
+
+       bin/vm-templates.sh
+
+Notably:
+       
+       $IMGS_DIR
+       $DISK_DIR
+
+=== 2. Download ubuntu cloud image 
+
+=== 3. Run VM
+
+       ./run.sh
+
+== Miscellaneous Notes
+
 THE FOLLOWING ARE SOME USEFUL EXCEPRTS FROM `edk2-build.config`
 
 ####################################################################################
