@@ -25,7 +25,9 @@ Donwload the Ubuntu cloud images to the directory you set `$IMGS_DIR` to above.
 
        ./run.sh
 
-== Miscellaneous Notes
+== Miscellaneous EDK2 Notes
+
+https://www.kraxel.org/blog/2022/05/edk2-virt-quickstart/
 
 THE FOLLOWING ARE SOME USEFUL EXCEPRTS FROM `edk2-build.config`
 
