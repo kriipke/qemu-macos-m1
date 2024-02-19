@@ -25,7 +25,7 @@ function create_disk () {
 		set -x 
 		qemu-img create \
 			-F qcow2 -f qcow2 \
-			-o backing_file="${IMGS_DIR:?}/${BASE_IMAGE:?}" "${DISK_DIR:?}/${OUTPUT_IMAGE:?}"
+			-o backing_file="${IMGS_DIR:?}/${BASE_IMAGE:?}" "${DISK_DIR:?}/${OUTPUT_IMAGE:?}" 15G
 		set +x
 	else
 		echo "Output image file already exists! Not creating new disk image."

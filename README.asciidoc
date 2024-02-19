@@ -25,6 +25,10 @@ Donwload the Ubuntu cloud images to the directory you set `$IMGS_DIR` to above.
 
        ./run.sh
 
+=== 4. Bootstrap VM
+
+	curl -sSL https://gist.github.com/kriipke/f70919d5a4a1096011f4e7f2fa7dbe05 | sudo bash -eux -
+
 == Miscellaneous EDK2 Notes
 
 https://www.kraxel.org/blog/2022/05/edk2-virt-quickstart/
